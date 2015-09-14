@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 247
+  Left = 733
   Height = 638
-  Top = 175
-  Width = 1257
+  Top = 276
+  Width = 800
   Caption = 'TCPLogger_V2'
   ClientHeight = 618
-  ClientWidth = 1257
+  ClientWidth = 800
   Menu = MainMenu1
   OnCreate = FormCreate
   OnResize = FormResize
@@ -15,32 +15,33 @@ object Form1: TForm1
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = Owner
-    AnchorSideBottom.Side = asrBottom
+    AnchorSideBottom.Control = StatusBar1
     Left = 0
-    Height = 618
+    Height = 598
     Top = 0
-    Width = 1257
+    Width = 800
     Anchors = [akTop, akLeft, akRight, akBottom]
-    Position = 1024
+    Position = 665
     object PairSplitterSide3: TPairSplitterSide
       Cursor = crArrow
       Left = 0
-      Height = 618
+      Height = 598
       Top = 0
-      Width = 1024
-      ClientWidth = 1024
-      ClientHeight = 618
+      Width = 665
+      ClientWidth = 665
+      ClientHeight = 598
       object PairSplitter1: TPairSplitter
         AnchorSideLeft.Control = Owner
         AnchorSideTop.Control = Owner
-        AnchorSideBottom.Control = Owner
+        AnchorSideRight.Control = PairSplitterSide3
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = PairSplitterSide3
         AnchorSideBottom.Side = asrBottom
         Cursor = crVSplit
         Left = 0
-        Height = 1204
+        Height = 598
         Top = 0
-        Width = 2011
+        Width = 665
         Anchors = [akTop, akLeft, akRight, akBottom]
         OnChangeBounds = PairSplitter1ChangeBounds
         Position = 296
@@ -50,8 +51,8 @@ object Form1: TForm1
           Left = 0
           Height = 296
           Top = 0
-          Width = 2011
-          ClientWidth = 2011
+          Width = 665
+          ClientWidth = 665
           ClientHeight = 296
           object RichMemo1: TRichMemo
             AnchorSideLeft.Control = PairSplitterSide1
@@ -63,23 +64,28 @@ object Form1: TForm1
             Left = 0
             Height = 296
             Top = 0
-            Width = 2011
+            Width = 665
             Anchors = [akTop, akLeft, akRight, akBottom]
+            Font.CharSet = 4
+            Font.Height = 15
+            Font.Name = '@Arial Unicode MS'
             HideSelection = False
-            Lines.Strings = (
-              'RichMemo1'
-            )
+            OnEditingDone = RichMemo1EditingDone
+            OnKeyPress = RichMemo1KeyPress
+            ParentFont = False
+            ReadOnly = True
+            ScrollBars = ssAutoBoth
             TabOrder = 0
           end
         end
         object PairSplitterSide2: TPairSplitterSide
           Cursor = crArrow
           Left = 0
-          Height = 903
+          Height = 297
           Top = 301
-          Width = 2011
-          ClientWidth = 2011
-          ClientHeight = 903
+          Width = 665
+          ClientWidth = 665
+          ClientHeight = 297
           object RichMemo2: TRichMemo
             AnchorSideLeft.Control = PairSplitterSide2
             AnchorSideTop.Control = PairSplitterSide2
@@ -88,14 +94,18 @@ object Form1: TForm1
             AnchorSideBottom.Control = PairSplitterSide2
             AnchorSideBottom.Side = asrBottom
             Left = 0
-            Height = 903
+            Height = 297
             Top = 0
-            Width = 2011
+            Width = 665
             Anchors = [akTop, akLeft, akRight, akBottom]
+            Color = clInactiveBorder
+            Font.CharSet = 4
+            Font.Height = 15
+            Font.Name = '@Arial Unicode MS'
             HideSelection = False
-            Lines.Strings = (
-              'RichMemo2'
-            )
+            ParentFont = False
+            ReadOnly = True
+            ScrollBars = ssAutoBoth
             TabOrder = 0
           end
         end
@@ -103,12 +113,12 @@ object Form1: TForm1
     end
     object PairSplitterSide4: TPairSplitterSide
       Cursor = crArrow
-      Left = 1029
-      Height = 618
+      Left = 670
+      Height = 598
       Top = 0
-      Width = 228
-      ClientWidth = 228
-      ClientHeight = 618
+      Width = 130
+      ClientWidth = 130
+      ClientHeight = 598
       object GroupBox1: TGroupBox
         AnchorSideLeft.Control = PairSplitterSide4
         AnchorSideTop.Control = PairSplitterSide4
@@ -395,29 +405,14 @@ object Form1: TForm1
         AnchorSideBottom.Control = PairSplitterSide4
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 322
+        Height = 302
         Top = 296
-        Width = 228
+        Width = 130
         Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'From Client'
-        ClientHeight = 304
-        ClientWidth = 224
+        ClientHeight = 284
+        ClientWidth = 126
         TabOrder = 1
-        object ComboBox8: TComboBox
-          Left = 2
-          Height = 21
-          Top = 8
-          Width = 120
-          ItemHeight = 13
-          ItemIndex = 0
-          Items.Strings = (
-            'TCP/IP'
-          )
-          OnChange = ComboBox8Change
-          Style = csDropDownList
-          TabOrder = 0
-          Text = 'TCP/IP'
-        end
         object Panel3: TPanel
           Left = 0
           Height = 106
@@ -425,7 +420,7 @@ object Form1: TForm1
           Width = 122
           ClientHeight = 106
           ClientWidth = 122
-          TabOrder = 1
+          TabOrder = 0
           object LabeledEdit4: TLabeledEdit
             Left = 8
             Height = 21
@@ -453,8 +448,8 @@ object Form1: TForm1
           Width = 122
           ClientHeight = 160
           ClientWidth = 122
-          TabOrder = 2
-          object ComboBox9: TComboBox
+          TabOrder = 1
+          object ComboBox8: TComboBox
             Left = 12
             Height = 21
             Top = 16
@@ -489,15 +484,14 @@ object Form1: TForm1
             Caption = 'Num Bits'
             ParentColor = False
           end
-          object ComboBox10: TComboBox
+          object ComboBox9: TComboBox
             Left = 12
             Height = 21
             Top = 56
             Width = 50
             ItemHeight = 13
-            ItemIndex = 1
+            ItemIndex = 0
             Items.Strings = (
-              '9'
               '8'
               '7'
               '6'
@@ -515,7 +509,7 @@ object Form1: TForm1
             Caption = 'Parity'
             ParentColor = False
           end
-          object ComboBox11: TComboBox
+          object ComboBox10: TComboBox
             Left = 12
             Height = 21
             Top = 96
@@ -523,16 +517,16 @@ object Form1: TForm1
             ItemHeight = 13
             ItemIndex = 0
             Items.Strings = (
-              'NONE'
-              'ODD'
-              'EVEN'
-              'MARK'
-              'SPACE'
+              'ptNone'
+              'ptOdd'
+              'ptEven'
+              'ptMark'
+              'ptSpace'
             )
             OnChange = ComboBox4Change
             Style = csDropDownList
             TabOrder = 2
-            Text = 'NONE'
+            Text = 'ptNone'
           end
           object Label10: TLabel
             Left = 64
@@ -542,7 +536,7 @@ object Form1: TForm1
             Caption = 'Stop Bit'
             ParentColor = False
           end
-          object ComboBox12: TComboBox
+          object ComboBox11: TComboBox
             Left = 64
             Height = 21
             Top = 96
@@ -550,13 +544,13 @@ object Form1: TForm1
             ItemHeight = 13
             ItemIndex = 0
             Items.Strings = (
-              'ONE'
-              'ONE5'
-              'TWO'
+              'sbONE'
+              'sbONE5'
+              'sbTWO'
             )
             Style = csDropDownList
             TabOrder = 3
-            Text = 'ONE'
+            Text = 'sbONE'
           end
           object Label11: TLabel
             Left = 64
@@ -566,7 +560,7 @@ object Form1: TForm1
             Caption = 'Flow Ctrl'
             ParentColor = False
           end
-          object ComboBox13: TComboBox
+          object ComboBox12: TComboBox
             Left = 64
             Height = 21
             Top = 56
@@ -590,7 +584,7 @@ object Form1: TForm1
             Caption = 'Read Mode'
             ParentColor = False
           end
-          object ComboBox14: TComboBox
+          object ComboBox13: TComboBox
             Left = 12
             Height = 21
             Top = 136
@@ -627,12 +621,28 @@ object Form1: TForm1
           end
         end
         object Button2: TButton
-          Left = 2
+          Left = 0
           Height = 25
           Top = 32
           Width = 120
           Caption = 'START'
+          OnClick = Button2Click
+          TabOrder = 2
+        end
+        object ComboBox14: TComboBox
+          Left = 2
+          Height = 21
+          Top = 8
+          Width = 120
+          ItemHeight = 13
+          ItemIndex = 0
+          Items.Strings = (
+            'TCP/IP'
+          )
+          OnChange = ComboBox14Change
+          Style = csDropDownList
           TabOrder = 3
+          Text = 'TCP/IP'
         end
       end
     end
@@ -641,7 +651,7 @@ object Form1: TForm1
     Left = 0
     Height = 20
     Top = 598
-    Width = 1257
+    Width = 800
     Panels = <    
       item
         Text = 'Not connected to Server'
@@ -657,7 +667,7 @@ object Form1: TForm1
         Width = 125
       end    
       item
-        Text = 'MODE: Terminal to Server'
+        Text = 'MODE: PassThrough Only'
         Width = 200
       end>
     SimplePanel = False
@@ -670,7 +680,6 @@ object Form1: TForm1
       object MenuItem10: TMenuItem
         AutoCheck = True
         Caption = 'Term to Server'
-        Checked = True
         RadioItem = True
         OnClick = MenuItem10Click
       end
@@ -682,9 +691,28 @@ object Form1: TForm1
       end
       object MenuItem11: TMenuItem
         AutoCheck = True
-        Caption = 'Sniffer'
+        Caption = 'PassThrough'
+        Checked = True
         RadioItem = True
         OnClick = MenuItem11Click
+      end
+      object MenuItem16: TMenuItem
+        AutoCheck = True
+        Caption = 'Log Only'
+        RadioItem = True
+        OnClick = MenuItem16Click
+      end
+      object MenuItem14: TMenuItem
+        AutoCheck = True
+        Caption = 'Server to Client'
+        Checked = True
+        OnClick = MenuItem14Click
+      end
+      object MenuItem15: TMenuItem
+        AutoCheck = True
+        Caption = 'Client to Server'
+        Checked = True
+        OnClick = MenuItem15Click
       end
       object MenuItem13: TMenuItem
         AutoCheck = True
@@ -715,6 +743,11 @@ object Form1: TForm1
       Caption = 'Setup'
       object MenuItem5: TMenuItem
         Caption = 'Log Directory'
+        OnClick = MenuItem5Click
+      end
+      object MenuItem17: TMenuItem
+        Caption = 'New Log file'
+        OnClick = MenuItem17Click
       end
       object MenuItem8: TMenuItem
         Caption = 'Save CFG'
@@ -723,5 +756,34 @@ object Form1: TForm1
         Caption = 'Load CFG'
       end
     end
+  end
+  object lNetServer: TLTCPComponent
+    Port = 0
+    OnReceive = lNetServerReceive
+    OnDisconnect = lNetServerDisconnect
+    OnConnect = lNetServerConnect
+    Timeout = 0
+    ReuseAddress = False
+    left = 480
+    top = 91
+  end
+  object lnetclient: TLTCPComponent
+    Port = 0
+    OnReceive = lnetclientReceive
+    OnError = lnetclientError
+    OnDisconnect = lnetclientDisconnect
+    OnConnect = lnetclientConnect
+    OnAccept = lnetclientAccept
+    Timeout = 0
+    ReuseAddress = False
+    left = 480
+    top = 144
+  end
+  object SelectDirectoryDialog1: TSelectDirectoryDialog
+    Title = 'Select Log Directory'
+    FilterIndex = 0
+    Options = [ofPathMustExist, ofEnableSizing, ofViewDetail]
+    left = 480
+    top = 40
   end
 end
